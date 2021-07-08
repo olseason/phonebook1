@@ -33,9 +33,7 @@
 	
 	response.sendRedirect("./list.jsp"); // --> 리 다이렉트 해당 주소로 이동시킨다.
 	
-%>
-
-	
+%>	
 
 <%-- 
 <!DOCTYPE html>
@@ -47,9 +45,7 @@
 <body>
 	<h1>전화번호 리스트-insert</h1>
 	
-	<p>입력한 정보 내역입니다.</p>
-	
-	
+	<p>입력한 정보 내역입니다.</p>	
 	 
 	<%
 	for(int i = 0; i < personList.size(); i++){
