@@ -85,9 +85,8 @@ public class PhoneDao {
 		close();
 		return count;
 	}
-	
-	
-	//사람 리스트(검색안할때)
+
+	// 사람 리스트(검색안할때)
 	public List<PersonVo> getPersonList() {
 		return getPersonList("");
 	}
@@ -143,7 +142,6 @@ public class PhoneDao {
 		return personList;
 
 	}
-
 
 	// 사람 수정
 	public int personUpdate(PersonVo personVo) {
@@ -205,6 +203,50 @@ public class PhoneDao {
 
 		close();
 		return count;
+	}
+
+	// 사람 1명 가져오기
+	public PersonVo getPerson(int personId) {
+		PersonVo personVo = null;
+		
+		getConnection();
+
+		try {
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String query = "";
+			query += " select  person_id, ";
+			query += "         name, ";
+			query += "         hp, ";
+			query += "         company ";
+			query += " from person";
+			query += " where person_id = ?";
+
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, personId);
+			
+			rs = pstmt.executeQuery();
+		
+			// 4.결과처리
+			while(rs.next()) {
+				int pid = rs.getInt("person_id");
+				String name = rs.getString("name");
+				String hp = rs.getString("hp");
+				String company = rs.getString("company");
+				
+				personVo = new PersonVo(pid, name, hp, company);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// 4.결과처리
+
+		close();
+
+		return personVo;
 	}
 
 }

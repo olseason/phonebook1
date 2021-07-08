@@ -32,7 +32,7 @@
 	%>
 			<table border="1">
 				<tr>
-					<td>이름</td>
+					<td>이름 (<%=personList.get(i).getPersonId() %>)</td>
 					<td><%=personList.get(i).getName() %></td>
 				</tr>
 				
@@ -43,7 +43,7 @@
 				
 				<tr>
 					<td>회사</td>
-					<td><%=personList.get(i).getCompany() %></td>
+					<td><a href="./delete.jsp?id=<%=personList.get(i).getPersonId()%>"></a></td>
 				</tr>
 			</table>
 			<br>
